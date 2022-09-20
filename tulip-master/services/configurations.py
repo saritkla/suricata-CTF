@@ -25,9 +25,9 @@
 import re
 import os
 
-mongo_host = os.getenv("TULIP_MONGO", "localhost:27017")
+mongo_host = os.getenv("TULIP_MONGO", "10.60.14.3:27017")
 mongo_server = f'mongodb://{mongo_host}/'
-vm_ip = "localhost"  # todo put regex
+vm_ip = "10.60.14.3"  # todo put regex
 
 services = [{"ip": vm_ip, "port": 80, "name": "saarbahn"},
             {"ip": vm_ip, "port": 443, "name": "bytewarden"},

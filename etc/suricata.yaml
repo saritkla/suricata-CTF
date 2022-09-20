@@ -360,7 +360,7 @@ outputs:
   # - encrypted streams after the key exchange
   #
   - pcap-log:
-      enabled: no
+      enabled: yes
       filename: log.pcap
 
       # File size limit.  Can be specified in kb, mb, gb.  Just a number
@@ -1873,7 +1873,7 @@ napatech:
 default-rule-path: /var/lib/suricata/rules
 
 rule-files:
-  - suricata.rules
+  # - suricata.rules
 
 ##
 ## Auxiliary configuration files.

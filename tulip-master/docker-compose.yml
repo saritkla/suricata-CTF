@@ -65,7 +65,7 @@ services:
     networks:
       - internal
     volumes:
-      - /run/desktop/mnt/host/c/Users/59050316/suricata/log/:/traffic:ro
+      - ../log/:/traffic/:ro
     command: "./enricher -eve /traffic/eve.json"
     environment:
       TULIP_MONGO: mongo:27017
