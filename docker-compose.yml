@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  suricata:
+    image: jasonish/suricata:6.0.4
+    hostname: suricata
+    container_name: suricata
+    volumes:
+      - /run/desktop/mnt/host/c/Users/59050316/suricata/etc:/etc/suricata
+      - /run/desktop/mnt/host/c/Users/59050316/suricata/log:/var/log/suricata
+      - /run/desktop/mnt/host/c/Users/59050316/suricata/rules:/var/lib/suricata/rules
+    cap_add:
+      # - ALL
+      - NET_ADMIN
+      - NET_RAW
+      - SYS_NICE
+    environment:
+      - TZ=Asia/Bangkok
+    network_mode: host
+    command: /usr/bin/suricata -c /etc/suricata/suricata.yaml -s /var/lib/suricata/rules/testrules.rules -i eth0
+networks:
+  suricata:

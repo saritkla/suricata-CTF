@@ -1,0 +1,5 @@
+alert tcp any any -> any any (msg: "Path Traversal-../"; flow:to_server; content: "../"; metadata: tag path_traversal; sid:1; rev: 1;)
+alert icmp any any -> any any (msg:"PING detected";metadata: tag PING_detected; sid:2; rev:1;)
+alert tcp any any -> any 23 (msg:"Telnet conn to port 23"; metadata: tag Telnet; sid:3; rev:1;)
+alert tcp any any -> any 80 (msg:"HTTP traffic detect"; sid:4 ;metadata: tag HTTP_traffic; rev:1;)
+alert tcp any any -> any 443 (msg:"HTTPS traffic detect"; sid:5 ;metadata: tag HTTPS_traffic; rev:1;)
