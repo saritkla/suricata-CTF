@@ -1,0 +1,18 @@
+20/9/2022 -- 22:05:00 - <Notice> - This is Suricata version 6.0.4 RELEASE running in SYSTEM mode
+20/9/2022 -- 22:05:00 - <Info> - CPUs/cores online: 12
+20/9/2022 -- 22:05:00 - <Info> - Found an MTU of 1500 for 'eth0'
+20/9/2022 -- 22:05:00 - <Info> - Found an MTU of 1500 for 'eth0'
+20/9/2022 -- 22:05:00 - <Info> - fast output device (regular) initialized: fast.log
+20/9/2022 -- 22:05:00 - <Info> - eve-log output device (regular) initialized: eve.json
+20/9/2022 -- 22:05:00 - <Info> - stats output device (regular) initialized: stats.log
+20/9/2022 -- 22:05:00 - <Info> - Running in live mode, activating unix socket
+20/9/2022 -- 22:05:00 - <Warning> - [ERRCODE: SC_ERR_NO_RULES(42)] - No rule files match the pattern /var/lib/suricata/rules/suricata.rules
+20/9/2022 -- 22:05:01 - <Info> - 2 rule files processed. 390 rules successfully loaded, 0 rules failed
+20/9/2022 -- 22:05:01 - <Info> - Threshold config parsed: 0 rule(s) found
+20/9/2022 -- 22:05:01 - <Info> - 390 signatures processed. 0 are IP-only rules, 212 are inspecting packet payload, 178 inspect application layer, 0 are decoder event only
+20/9/2022 -- 22:05:01 - <Warning> - [ERRCODE: SC_WARN_FLOWBIT(306)] - flowbit 'ET.pdf.in.http' is checked but not set. Checked in 2017790 and 0 other sigs
+20/9/2022 -- 22:05:02 - <Info> - Going to use 12 thread(s)
+20/9/2022 -- 22:05:02 - <Info> - Running in live mode, activating unix socket
+20/9/2022 -- 22:05:02 - <Info> - Using unix socket file '/var/run/suricata/suricata-command.socket'
+20/9/2022 -- 22:05:02 - <Notice> - all 12 packet processing threads, 4 management threads initialized, engine started.
+20/9/2022 -- 22:05:03 - <Info> - All AFP capture threads are running.

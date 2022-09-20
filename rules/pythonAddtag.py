@@ -10,11 +10,11 @@ for i in fileread:
     # print(i)
     reg = re.search('.*msg\:\"(?P<msg>.*?)\"',i)
     if reg:
-        cutdata = re.search('(?P<data>.*?)\)',i)
+        cutdata = re.search('(?P<data>.*)\)',i)
         if cutdata:
             data = cutdata['data']
             msg =  reg['msg'].replace(" ", "_")
-            addtag = ";"+data+"metadata: tag " + msg + ";)"
+            addtag = data+"metadata: tag " + msg + ";)"
             fulladdtag = (f'{addtag}\n')
             filewrite.write(fulladdtag)
             print(addtag)

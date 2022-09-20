@@ -1,5 +1,75 @@
 version: '3.7'
 services:
+  mongo:
+    image: mongo:5
+    networks:
+      - internal
+    restart: always
+    ports:
+      - "27017:27017"
+
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile-frontend
+    image: tulip-frontend:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mongo
+    networks:
+      - internal
+    environment:
+      API_SERVER_ENDPOINT: http://api:5000/
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile-python
+    image: tulip-api:latest
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo
+    networks:
+      - internal
+    volumes:
+      - ./shared:/shared
+    environment:
+      TULIP_MONGO: mongo:27017
+      FLAG_REGEX: "[A-Z0-9]{31}="
+
+  assembler:
+    build:
+      context: services/go-importer
+      dockerfile: Dockerfile-assembler
+    image: tulip-assembler:latest
+    depends_on:
+      - mongo
+    networks:
+      - internal
+    volumes:
+      - ./traffic:/traffic:ro
+    command: "./assembler -dir /traffic"
+    environment:
+      TULIP_MONGO: mongo:27017
+      FLAG_REGEX: "[A-Z0-9]{31}="
+
+  enricher:
+    build:
+      context: services/go-importer
+      dockerfile: Dockerfile-enricher
+    image: tulip-enricher:latest
+    depends_on:
+      - mongo
+    networks:
+      - internal
+    volumes:
+      - /run/desktop/mnt/host/c/Users/59050316/suricata/log/:/traffic:ro
+    command: "./enricher -eve /traffic/eve.json"
+    environment:
+      TULIP_MONGO: mongo:27017
+      
   suricata:
     image: jasonish/suricata:6.0.4
     hostname: suricata
@@ -18,4 +88,4 @@ services:
     network_mode: host
     command: /usr/bin/suricata -c /etc/suricata/suricata.yaml -s /var/lib/suricata/rules/exploitewithtag.rules -i eth0
 networks:
-  suricata:
+  internal:
