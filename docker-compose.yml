@@ -16,6 +16,6 @@ services:
     environment:
       - TZ=Asia/Bangkok
     network_mode: host
-    command: /usr/bin/suricata -c /etc/suricata/suricata.yaml -s /var/lib/suricata/rules/testrules.rules -i eth0
+    command: /usr/bin/suricata -c /etc/suricata/suricata.yaml -s /var/lib/suricata/rules/exploitewithtag.rules -i eth0
 networks:
   suricata:
